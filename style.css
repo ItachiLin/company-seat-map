@@ -1,0 +1,193 @@
+/* 設定全頁字型 */
+body {
+    font-family: Arial, "Microsoft JhengHei", sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+/* 標題與工具列樣式 */
+header.page-header {
+    display: flex;
+    background-color: #333;
+    color: #fff;
+    justify-content: space-between;
+    /* 標題與工具列分別靠兩端排列 */
+    align-items: center;
+    /* 垂直置中對齊 */
+    border: 1px solid black;
+    padding: 10px 20px;
+    /* 設定向內間距(上下 左右) */
+}
+
+/* 設定toolbar按鈕樣式 */
+button.toolbar-button {
+    padding: 8px 14px;
+    background-color: #f0f0f0;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* 設定toolbar按鈕滑過樣式樣式 */
+button.toolbar-button:hover {
+    background-color: #e0e0e0;
+}
+
+div#toolbar {
+    /* border: 1px solid black; */
+    /* margin-bottom: 10px; */
+}
+
+div#toolbar>ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    gap: 10px;
+}
+
+
+main.seat-map-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    border: 1px solid black;
+    column-gap: 10px;
+    background-color: #f5f5f5;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+aside.employee-panel {
+    border: 1px solid black;
+    background-color: #f0f0f0;
+    padding: 16px;
+}
+
+ul#employee-list {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    gap: 10px;
+}
+
+li.employee-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 10px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 6px;
+
+}
+
+span.employee-name {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+span.employee-department,
+span.employee-role,
+span.employee-extension {
+    font-size: 14px;
+    color: #555;
+}
+
+section.seat-map-panel {
+    border: 1px solid black;
+    background-color: #e0e0e0;
+    padding: 16px;
+}
+
+div#floor-plan {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    min-height: 400px;
+    /* 設定最小高度，避免內容過少時高度過小 */
+    border: 1px solid black;
+    background-color: #fff;
+    gap: 10px;
+}
+
+div.department-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px dashed #aaa;
+    padding: 10px;
+    background-color: #f8f9fa;
+    gap: 12px;
+}
+
+div.department-area h3 {
+    margin: 0;
+}
+
+div.seat-row {
+    display: flex;
+    justify-content: center;
+}
+
+div.seat {
+    display: flex;
+    width: 140px;
+    min-height: 90px;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border: 1px solid #666;
+}
+
+div.management-seat-color {
+    background-color: #FF0000;
+    /* 管理處位置顏色 */
+}
+
+div.quality-service-seat-color {
+    background-color: #00FF00;
+    /* 品質與技術服務處位置顏色 */
+}
+
+div.product-development-seat-color {
+    background-color: #0000FF;
+    /* 產品發展處位置顏色 */
+}
+
+ul#department-legend {
+    display: flex;
+    list-style-type: none;
+    border: 1px solid black;
+    margin: 0;
+    padding: 0;
+    gap: 10px;
+}
+
+li.department-legend-item {
+    display: flex;
+    align-items: center;
+}
+
+span.color-swatch {
+    display: inline-block;
+    width: 11px;
+    height: 11px;
+    border: 1px solid black;
+    margin-right: 5px;
+}
+
+span.management-color {
+    background-color: #FF0000;
+    /* 管理處顏色 */
+}
+
+span.quality-service-color {
+    background-color: #00FF00;
+    /* 品質與技術服務處顏色 */
+}
+
+span.product-development-color {
+    background-color: #0000FF;
+    /* 產品發展處顏色 */
+}
