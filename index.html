@@ -30,19 +30,19 @@
 
             <ul id="employee-list">
 
-                <li class="employee-item">
+                <li class="employee-item" draggable="true">
                     <span class="employee-name">王小明</span>
                     <span class="employee-department">管理處</span>
                     <span class="employee-role">人資</span>
                     <span class="employee-extension">分機：440</span>
                 </li>
-                <li class="employee-item">
+                <li class="employee-item" draggable="true">
                     <span class="employee-name">李大華</span>
                     <span class="employee-department">品質與技術服務處</span>
                     <span class="employee-role">測試工程師</span>
                     <span class="employee-extension">分機：441</span>
                 </li>
-                <li class="employee-item">
+                <li class="employee-item" draggable="true">
                     <span class="employee-name">張美玲</span>
                     <span class="employee-department">產品發展處</span>
                     <span class="employee-role">前端工程師</span>
@@ -57,32 +57,29 @@
         <section class="seat-map-panel">
             <h2>公司座位表</h2>
 
-            <div id="floor-plan">
-                <div class="department-area management-area">
-                    <h3>管理處</h3>
-                    
-                    <div class="seat-row">
-                        <div class="seat management-seat-color">M01</div>
-                        <div class="seat management-seat-color">M02</div>
+            <div class="floor-plan-viewport">
+                <div id="floor-plan">
+                    <div class="seat" id="seat-1">
+                        <div class="seat-employee-info"></div>
                     </div>
-
-                </div>
-                <div class="department-area quality-service-area">
-                    <h3>品質與技術服務處</h3>
-                    <div class="seat-row">
-                        <div class="seat quality-service-seat-color">Q01</div>
-                        <div class="seat quality-service-seat-color">Q02</div>
+                    <div class="seat" id="seat-2">
+                        <div class="seat-employee-info"></div>
                     </div>
-                </div>
-                <div class="department-area product-development-area">
-                    <h3>產品發展處</h3>
-                    <div class="seat-row">
-                        <div class="seat product-development-seat-color">P01</div>
-                        <div class="seat product-development-seat-color">P02</div>
+                    <div class="seat" id="seat-3">
+                        <div class="seat-employee-info"></div>
+                    </div>
+                    <div class="seat" id="seat-4">
+                        <div class="seat-employee-info"></div>
+                    </div>
+                    <div class="seat" id="seat-5">
+                        <div class="seat-employee-info"></div>
+                    </div>
+                    <div class="seat" id="seat-6">
+                        <div class="seat-employee-info"></div>
                     </div>
                 </div>
-
             </div>
+
 
             <h3>部門顏色圖例</h3>
 
@@ -100,7 +97,8 @@
         </section>
 
     </main>
-
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
