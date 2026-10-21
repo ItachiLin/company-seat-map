@@ -1,13 +1,44 @@
 $(document).ready(function () {
+    let isSeatEditMode = false;
+    $('#edit-seat-button').on('click', function () {
+        isSeatEditMode = !isSeatEditMode;
+        console.log(isSeatEditMode);
+
+    });
+    $('#floor-plan').on('click', function (event) {
+        if (isSeatEditMode == false) {
+            return;
+        }
+        console.log('點擊平面圖');
+
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     $(document).on('dragstart', '.employee-item', function (event) {
         const employeeName = $(this).find('.employee-name').text().trim();
-        console.log('開始拖曳員工' + employeeName);
         const employeeDepartment = $(this).find('.employee-department').text().trim();
-        console.log("開始拖曳員工部門" + employeeDepartment);
         const employeeRole = $(this).find('.employee-role').text().trim();
-        console.log("開始拖曳員工職務" + employeeRole);
         const employeeExtension = $(this).find('.employee-extension').text().trim();
-        console.log("開始拖曳員工分機" + employeeExtension);
         const employeeData = {
             name: employeeName,
             department: employeeDepartment,
@@ -15,20 +46,6 @@ $(document).ready(function () {
             extension: employeeExtension
         };
         event.originalEvent.dataTransfer.setData('text/plain', JSON.stringify(employeeData));
-
-
-
-
-
-        console.log(JSON.stringify(employeeData));
-        console.log(typeof JSON.stringify(employeeData));
-
-
-
-        console.log(employeeData);
-        console.log(typeof employeeData);
-
-
     });
 
     $(document).on('dragover', '.seat', function (event) {
@@ -36,17 +53,62 @@ $(document).ready(function () {
     });
 
     $(document).on('drop', '.seat', function (event) {
-        console.log('員工放到座位上');
-        const employeeText = event.originalEvent.dataTransfer.getData('text/plain');
-        console.log(employeeText);
-        const employeeData = JSON.parse(employeeText);
-        console.log(employeeData);
-        $(this).find('.seat-employee-info').append($('<span>').text(employeeData.name));
-        console.log(employeeData.name);
-        $(this).find('.seat-employee-info').append($('<span>').text(employeeData.department));
-        $(this).find('.seat-employee-info').append($('<span>').text(employeeData.role));
-        $(this).find('.seat-employee-info').append($('<span>').text(employeeData.extension));
+        const currentSeatText = $(this).find('.seat-employee-info').text().trim();
+        console.log(currentSeatText);
+        if (currentSeatText !== '') {
+            console.log('座位已有人');
+            const shouldReplace = confirm('座位已有員工，是否要取代？');
+            if (shouldReplace) {
+                console.log('員工放到座位上');
+                const employeeText = event.originalEvent.dataTransfer.getData('text/plain');
+                const employeeData = JSON.parse(employeeText);
+                $(this).find('.seat-employee-info').empty();
+                $(this).removeClass('management-seat-color quality-service-seat-color product-development-seat-color');
+                $(this).find('.seat-employee-info').append($('<span>').text(employeeData.name));
+                $(this).find('.seat-employee-info').append($('<span>').text(employeeData.department));
+                $(this).find('.seat-employee-info').append($('<span>').text(employeeData.role));
+                $(this).find('.seat-employee-info').append($('<span>').text(employeeData.extension));
+                if (employeeData.department === '管理處') {
+                    $(this).addClass('management-seat-color');
+
+                } else if (employeeData.department === '品質與技術服務處') {
+
+                    $(this).addClass('quality-service-seat-color');
+                } else if (employeeData.department === '產品發展處') {
+                    $(this).addClass('product-development-seat-color');
+
+                }
+
+            } else {
+                return;
+            }
+
+        } else {
+            console.log('座位沒有人');
+            console.log('員工放到座位上');
+            const employeeText = event.originalEvent.dataTransfer.getData('text/plain');
+            const employeeData = JSON.parse(employeeText);
+            $(this).find('.seat-employee-info').empty();
+            $(this).find('.seat-employee-info').append($('<span>').text(employeeData.name));
+            $(this).find('.seat-employee-info').append($('<span>').text(employeeData.department));
+            $(this).find('.seat-employee-info').append($('<span>').text(employeeData.role));
+            $(this).find('.seat-employee-info').append($('<span>').text(employeeData.extension));
+            if (employeeData.department === '管理處') {
+                $(this).addClass('management-seat-color');
+
+            } else if (employeeData.department === '品質與技術服務處') {
+                $(this).addClass('quality-service-seat-color');
+
+            } else if (employeeData.department === '產品發展處') {
+                $(this).addClass('product-development-seat-color');
+
+            }
+
+        }
     });
+
+
+
 
 
 
