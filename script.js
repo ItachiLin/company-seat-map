@@ -5,14 +5,78 @@ $(document).ready(function () {
         console.log(isSeatEditMode);
 
     });
-    $('#floor-plan').on('click', function (event) {
-        if (isSeatEditMode == false) {
+
+    $('#add-seat-button').on('click', function () {
+        if (isSeatEditMode === false) {
             return;
         }
-        console.log('點擊平面圖');
+        console.log('準備新增座位');
+        $('#floor-plan').append($('<div class="seat">').append('<div class="seat-employee-info">').css({ left: '50px', top: '290px' }));
 
     });
 
+    let allEmployeeData = { name: '', department: '', role: '', extension: '' }
+
+
+    $('#add-employee-button').on('click', function () {
+        console.log($('#add-employee-name').val().trim());
+        console.log($('#add-employee-department').val().trim());
+        console.log($('#add-employee-role').val().trim());
+        console.log($('#add-employee-extension').val().trim());
+        const addEmployeeName = $('#add-employee-name').val().trim();
+        const addEmployeeDepartment = $('#add-employee-department').val().trim();
+        const addEmployeeRole = $('#add-employee-role').val().trim();
+        const addEmployeeExtension = $('#add-employee-extension').val().trim();
+
+        if (addEmployeeName === '' || addEmployeeDepartment === '' || addEmployeeRole === '') {
+            alert('請輸入完整的員工資料');
+            return;
+        } else {
+            const newEmployee = $('<li class="employee-item" draggable="true">');
+            newEmployee.append($('<span class="employee-name">').text(addEmployeeName));
+            newEmployee.append($('<span class="employee-department">').text(addEmployeeDepartment));
+            newEmployee.append($('<span class="employee-role">').text(addEmployeeRole));
+            if(addEmployeeExtension!==''){
+                newEmployee.append($('<span class="employee-extension">').text('分機：' + addEmployeeExtension));
+            }
+            $('#employee-list').append(newEmployee);
+        }
+    })
+
+
+    let isDraggingSeat = false;
+    let selectedSeat = null;
+    let mouseOffsetX = 0;
+    let mouseOffsetY = 0;
+
+    $('#floor-plan').on('mousedown', '.seat', function (event) {
+        if (isSeatEditMode === false) {
+            return;
+        }
+        event.preventDefault();
+        console.log('開始移動座位');
+        isDraggingSeat = true;
+        selectedSeat = $(this);
+        mouseOffsetX = event.pageX - selectedSeat.offset().left;
+        mouseOffsetY = event.pageY - selectedSeat.offset().top;
+        console.log($(this).offset().left);
+        console.log($(this).offset().top);
+        console.log($(this));
+        console.log(event.pageX);
+        console.log(event.pageY);
+    });
+
+    $(document).on('mousemove', function (event) {
+        if (isDraggingSeat === false) {
+            return;
+        }
+
+        selectedSeat.css({ left: `${event.pageX - $('#floor-plan').offset().left - mouseOffsetX}px`, top: `${event.pageY - $('#floor-plan').offset().top - mouseOffsetY}px` });
+    })
+
+    $(document).on('mouseup', function () {
+        isDraggingSeat = false;
+    })
 
 
 
@@ -30,11 +94,7 @@ $(document).ready(function () {
 
 
 
-
-
-
-
-    $(document).on('dragstart', '.employee-item', function (event) {
+    $('#employee-list').on('dragstart', '.employee-item', function (event) {
         const employeeName = $(this).find('.employee-name').text().trim();
         const employeeDepartment = $(this).find('.employee-department').text().trim();
         const employeeRole = $(this).find('.employee-role').text().trim();

@@ -14,6 +14,7 @@
         <div id="toolbar">
             <ul>
                 <li><button type="button" class="toolbar-button" id="edit-seat-button">編輯座位</button></li>
+                <li><button type="button" class="toolbar-button" id="add-seat-button">新增座位</button></li>
                 <li><button type="button" class="toolbar-button" id="assign-employee-button">安排人員</button></li>
                 <li><button type="button" class="toolbar-button" id="normal-view-button">一般檢視</button></li>
                 <li><button type="button" class="toolbar-button" id="department-view-button">部門檢視</button></li>
@@ -26,6 +27,15 @@
         <!-- 員工清單、搜尋功能 -->
         <aside class="employee-panel">
             <h2>待安排員工</h2>
+            <label for="add-employee-name">姓名</label>
+            <input type="text" id="add-employee-name">
+            <label for="add-employee-department">部門</label>
+            <input type="text" id="add-employee-department">
+            <label for="add-employee-role">職務</label>
+            <input type="text" id="add-employee-role">
+            <label for="add-employee-extension">分機</label>
+            <input type="text" id="add-employee-extension">
+            <button type="button" id="add-employee-button">新增員工</button>
 
 
             <ul id="employee-list">
@@ -56,6 +66,7 @@
         <!-- 平面圖、固定座位 -->
         <section class="seat-map-panel">
             <h2>公司座位表</h2>
+
 
             <div class="floor-plan-viewport">
                 <div id="floor-plan">
