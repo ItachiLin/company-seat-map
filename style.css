@@ -33,11 +33,6 @@ button.toolbar-button:hover {
     background-color: #e0e0e0;
 }
 
-div#toolbar {
-    /* border: 1px solid black; */
-    /* margin-bottom: 10px; */
-}
-
 div#toolbar>ul {
     display: flex;
     list-style-type: none;
@@ -61,6 +56,8 @@ aside.employee-panel {
     border: 1px solid black;
     background-color: #f0f0f0;
     padding: 16px;
+    display: flex;
+    flex-direction: column;
 }
 
 ul#employee-list {
@@ -113,13 +110,24 @@ div#floor-plan {
     height: 900px;
     border: 1px solid black;
     background-color: white;
+    background-image:
+        linear-gradient(to right, #d7dee7 1px, transparent 1px),
+        linear-gradient(to bottom, #d7dee7 1px, transparent 1px),
+        linear-gradient(to right, #eef1f5 1px, transparent 1px),
+        linear-gradient(to bottom, #eef1f5 1px, transparent 1px);
+    background-size:
+        50px 50px,
+        50px 50px,
+        10px 10px,
+        10px 10px;
 }
 
 div.seat {
     display: flex;
     flex-direction: column;
     width: 140px;
-    min-height: 90px;
+    height: 90px;
+    /* min-height: 90px; */
     justify-content: center;
     align-items: center;
     background-color: white;
@@ -128,35 +136,6 @@ div.seat {
     position: absolute;
 }
 
-div#seat-1 {
-    left: 50px;
-    top: 50px;
-}
-
-div#seat-2 {
-    left: 220px;
-    top: 50px;
-}
-
-div#seat-3 {
-    left: 390px;
-    top: 50px;
-}
-
-div#seat-4 {
-    left: 50px;
-    top: 170px;
-}
-
-div#seat-5 {
-    left: 220px;
-    top: 170px;
-}
-
-div#seat-6 {
-    left: 390px;
-    top: 170px;
-}
 
 div.management-seat-color {
     background-color: #FF0000;
@@ -178,6 +157,13 @@ div.seat-employee-info {
     display: flex;
     flex-direction: column;
     text-align: center;
+    width: 100%;
+    gap: 2px;
+    height: 100%;
+    min-width: 0;
+    min-height: 0;
+    box-sizing: border-box;
+    overflow: auto;
 }
 
 ul#department-legend {
