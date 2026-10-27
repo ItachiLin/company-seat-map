@@ -15,10 +15,11 @@
             <ul>
                 <li><button type="button" class="toolbar-button" id="edit-seat-button">編輯座位</button></li>
                 <li><button type="button" class="toolbar-button" id="add-seat-button">新增座位</button></li>
-                <li><button type="button" class="toolbar-button" id="assign-employee-button">安排人員</button></li>
+                <li><button type="button" class="toolbar-button" id="delete-seat-button">刪除座位</button></li>
+                <li><button type="button" class="toolbar-button" id="unassign-employee-button">解除安排</button></li>
                 <li><button type="button" class="toolbar-button" id="normal-view-button">一般檢視</button></li>
                 <li><button type="button" class="toolbar-button" id="department-view-button">部門檢視</button></li>
-                <li><button type="button" class="toolbar-button" id="save-layout-button">儲存配置</button></li>
+                <li><span id="save-status">儲存狀態：尚未儲存</span></li>
             </ul>
         </div>
     </header>
@@ -30,7 +31,8 @@
             <label for="add-employee-name">姓名</label>
             <input type="text" id="add-employee-name">
             <label for="add-employee-department">部門</label>
-            <input type="text" id="add-employee-department">
+            <input type="text" id="add-employee-department" list="department-options">
+            <datalist id="department-options"></datalist>
             <label for="add-employee-role">職務</label>
             <input type="text" id="add-employee-role">
             <label for="add-employee-extension">分機</label>
@@ -40,24 +42,7 @@
 
             <ul id="employee-list">
 
-                <li class="employee-item" draggable="true">
-                    <span class="employee-name">王小明</span>
-                    <span class="employee-department">管理處</span>
-                    <span class="employee-role">人資</span>
-                    <span class="employee-extension">分機：440</span>
-                </li>
-                <li class="employee-item" draggable="true">
-                    <span class="employee-name">李大華</span>
-                    <span class="employee-department">品質與技術服務處</span>
-                    <span class="employee-role">測試工程師</span>
-                    <span class="employee-extension">分機：441</span>
-                </li>
-                <li class="employee-item" draggable="true">
-                    <span class="employee-name">張美玲</span>
-                    <span class="employee-department">產品發展處</span>
-                    <span class="employee-role">前端工程師</span>
-                    <span class="employee-extension">分機：442</span>
-                </li>
+
 
             </ul>
 
@@ -70,24 +55,7 @@
 
             <div class="floor-plan-viewport">
                 <div id="floor-plan">
-                    <div class="seat" id="seat-1">
-                        <div class="seat-employee-info"></div>
-                    </div>
-                    <div class="seat" id="seat-2">
-                        <div class="seat-employee-info"></div>
-                    </div>
-                    <div class="seat" id="seat-3">
-                        <div class="seat-employee-info"></div>
-                    </div>
-                    <div class="seat" id="seat-4">
-                        <div class="seat-employee-info"></div>
-                    </div>
-                    <div class="seat" id="seat-5">
-                        <div class="seat-employee-info"></div>
-                    </div>
-                    <div class="seat" id="seat-6">
-                        <div class="seat-employee-info"></div>
-                    </div>
+                    
                 </div>
             </div>
 
@@ -96,10 +64,6 @@
 
             <ul id="department-legend">
 
-                <li class="department-legend-item"><span class="color-swatch management-color"></span>管理處</li>
-                <li class="department-legend-item"><span class="color-swatch quality-service-color"></span>品質與技術服務處</li>
-                <li class="department-legend-item"><span class="color-swatch product-development-color"></span>產品發展處
-                </li>
 
             </ul>
 
