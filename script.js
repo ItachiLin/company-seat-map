@@ -5,9 +5,16 @@ $(document).ready(function () {
     let isCompactView = false;
     let editingEmployeeId = null;
 
+    $('#add-seat-button').prop('disabled', true);
+    $('#delete-seat-button').prop('disabled', true);
+
     $('#edit-seat-button').on('click', function () {
         isSeatEditMode = !isSeatEditMode;
         console.log(isSeatEditMode);
+        const isAddSeatButtonDisabled = $('#add-seat-button').prop('disabled');
+        const isDeleteSeatButton = $('#delete-seat-button').prop('disabled');
+        $('#add-seat-button').prop('disabled', !isAddSeatButtonDisabled);
+        $('#delete-seat-button').prop('disabled', !isDeleteSeatButton);
 
     });
 
